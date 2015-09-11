@@ -12,47 +12,5 @@
     </div>
 </div>
 
-
-<%= form_for(Message.new) do |f| %>
-    <%# バリデーションで登録できなかった場合のエラーメッセージ ここから %>
-    <% if @message.errors.present? %>
-        <!--  bootstrapのalert-->
-        <div class="alert alert-danger">
-            <%= alert %>
-            <ul>
-                <%# 全ての属性のエラーを一次元の配列で得る「errors.full_messages」というメソッド %>
-                <% @message.errors.full_messages.each do |full_message| %>
-                    <li>
-                        <%= full_message %>
-                    </li>
-                <% end %>
-            </ul>
-        </div>
-    <% end %>
-    <%# バリデーションで登録できなかった場合のエラーメッセージ まで %>
-
-    <div class="form-horizontal"><!-- .form-horizontal クラスを指定したブロック要素で括ることで、水平レイアウトを使用できる。-->
-        <!-- .form-group クラスが .row クラスを兼ねているので、 .row クラスを指定した要素は不要。 -->
-        <div class="form-group">
-            <!-- label タグには、 .control-label クラスも指定する必要がある。-->
-            <label class="col-sm-2 control-label" for="message_name">名前：</label>
-            <div class="col-sm-10">
-                <%= f.text_field :name , class: 'form-control' , placeholder: '名前' %>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="message_body">内容：</label>
-            <div class="col-sm-10">
-                <%= f.text_area :body , class: 'form-control input-lg' , rows: '8' , placeholder: '内容' %>
-            </div>
-        </div>
-        <br />
-        <div class="form-group">
-            <div class="col-xs-offset-2 col-xs-10">
-                <%= f.submit "メッセージを投稿する" , class: 'btn btn-success btn-lg' %>
-            </div>
-        </div>
-    </div><!-- .from-horizontal -->
-
-<% end %>
-
+<%# 部分テンプレートを読み込む %>
+<%= render 'form' %>
