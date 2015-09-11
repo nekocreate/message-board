@@ -21,7 +21,14 @@
     </div>
   </nav>
   <div class="container">
-  <%= yield %>
+    <%# フラッシュメッセージ noticeがあるときにその中身を表示する %>
+    <% if notice %>
+      <div class="alert alert-info">
+        <%= notice %>
+      </div>
+    <% end %>
+    
+    <%= yield %>
   </div>
 </body>
 </html>
